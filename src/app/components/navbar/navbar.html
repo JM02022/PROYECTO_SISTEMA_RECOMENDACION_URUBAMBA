@@ -1,0 +1,43 @@
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 text-white">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            
+            <!-- Logo (Izquierda) -->
+            <a routerLink="Inicio" id="nav-logo" href="#" class="text-3xl font-bold flex items-center transition-all duration-300" style="color: black;">
+                <i class="fa-solid fa-leaf mr-2"></i>
+                Urubamba360
+            </a>
+            
+            <!-- Menú de Navegación (Centro) -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#destinos" class="nav-link font-medium transition-colors " style="color: black;">Destinos</a>
+                <a href="#" class="nav-link font-medium transition-colors" style="color: black;">Experiencias</a>
+                <a href="#" class="nav-link font-medium transition-colors" style="color: black;">Blog</a>
+                <a routerLink="Reseñas" href="#" class="nav-link font-medium transition-colors" style="color: black;">Reseñas</a>
+            </div>
+            
+            <!-- Login/Botón (Derecha) -->
+            <div class="hidden md:flex items-center space-x-4">
+                 <button class="text-xl">
+                    <i class="fa-solid fa-search"></i>
+                </button>
+                <a href="#" class="bg-eco-green text-white font-medium py-2 px-5 rounded-full
+                                hover:bg-eco-green-dark transition-all duration-300">
+                    Login
+                </a>
+            </div>
+            
+            <!-- Botón de Menú (Móvil) -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            
+        </div>
+        
+        <!-- Menú Desplegable (Móvil) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg text-gray-700">
+            <a href="#destinos" class="block py-3 px-6 hover:bg-eco-beige">Destinos</a>
+            <a href="#" class="block py-3 px-6 hover:bg-eco-beige">Experiencias</a>
+            <a href="#" class="block py-3 px-6 hover:bg-eco-beige">Blog</a>
+            <a href="#" class="block py-3 px-6 hover:bg-eco-beige">Login</a>
+        </div>
+    </nav>
