@@ -6,15 +6,31 @@ import { Observable } from 'rxjs'
 })
 export class ReseniasService {
 
-  private apiUrl = 'https://api.escuelajs.co/api/v1/users';
+  private apiUrl = 'http://api_urubamba_recomendacion/resenias';
 
   constructor(private http: HttpClient) { }
 
-  public getDatos(): Observable<any> {
+  public getResenias(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
 
-  public postDato(dato: any): Observable<any> {
+  public postResenia(dato: any): Observable<any> {
     return this.http.post(this.apiUrl, dato);
+  }
+  public deleteResenia(id: number): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete(url);
+  }
+  public updateResenia(id: number, dato: any): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put(url, dato);
+  }
+  public getReseniasByUsuario(idUsuario: number): Observable<any> {
+    const url = `${this.apiUrl}/usuario/${idUsuario}`;
+    return this.http.get(url);
+  }
+  public getReseniasByLugar(idLugar: number): Observable<any> {
+    const url = `${this.apiUrl}/lugar/${idLugar}`;
+    return this.http.get(url);
   }
 }
