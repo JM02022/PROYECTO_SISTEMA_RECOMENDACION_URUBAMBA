@@ -1,0 +1,172 @@
+:root {
+            --primary-green: #27ae60;
+            --dark-green: #1e8449;
+            --text-main: #333333;
+            --text-secondary: #4B5563;
+            --bg-light: #F9FAFB;
+            --white: #FFFFFF;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius: 12px;
+            --input-bg: #F3F4F6;
+            --accent-yellow: #F59E0B;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px; /* Ancho más contenido para formulario */
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- Tarjeta Principal --- */
+        .review-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            border: 1px solid #E5E7EB;
+        }
+
+        /* --- Header con Contexto del Sitio --- */
+        .review-context-header {
+            background-color: #ECFDF5;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .site-thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .context-text h2 { margin: 0; font-size: 1.2rem; color: var(--text-main); }
+        .context-text p { margin: 0; font-size: 0.9rem; color: var(--text-secondary); }
+
+        /* --- Cuerpo del Formulario --- */
+        .form-body { padding: 40px; }
+
+        .form-section { margin-bottom: 30px; }
+        .section-label { display: block; font-weight: 600; margin-bottom: 10px; color: var(--text-main); }
+        .section-helper { display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; }
+
+        /* --- Rating de Estrellas --- */
+        .rating-container {
+            display: flex;
+            gap: 10px;
+            flex-direction: row-reverse; /* Truco para hover css */
+            justify-content: flex-end;
+        }
+
+        .star-input { display: none; }
+
+        .star-label {
+            font-size: 2.5rem;
+            color: #D1D5DB; /* Gris inactivo */
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        /* Lógica de hover/checked (Selectores CSS) */
+        .star-label:hover,
+        .star-label:hover ~ .star-label,
+        .star-input:checked ~ .star-label {
+            color: var(--accent-yellow);
+        }
+
+        /* --- Inputs de Texto --- */
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--input-bg);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--text-main);
+            transition: all 0.3s;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .form-input:focus {
+            outline: none;
+            background-color: var(--white);
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 4px rgba(39, 174, 96, 0.1);
+        }
+
+        textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* --- Carga de Imágenes (Dropzone) --- */
+        .upload-dropzone {
+            border: 2px dashed #D1D5DB;
+            border-radius: var(--radius);
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background-color: #F9FAFB;
+        }
+
+        .upload-dropzone:hover {
+            border-color: var(--primary-green);
+            background-color: #ECFDF5;
+        }
+
+        .upload-icon { font-size: 2rem; color: var(--text-secondary); margin-bottom: 10px; display: block; }
+        .upload-text { font-weight: 500; color: var(--text-main); margin-bottom: 5px; }
+        .upload-subtext { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* --- Botones --- */
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+            border: none;
+        }
+
+        .btn-cancel {
+            background-color: transparent;
+            color: var(--text-secondary);
+        }
+        .btn-cancel:hover { background-color: #F3F4F6; color: var(--text-main); }
+
+        .btn-submit {
+            background-color: var(--primary-green);
+            color: var(--white);
+        }
+        .btn-submit:hover { background-color: var(--dark-green); transform: translateY(-1px); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .form-body { padding: 25px; }
+            .review-context-header { padding: 15px 20px; }
+        }

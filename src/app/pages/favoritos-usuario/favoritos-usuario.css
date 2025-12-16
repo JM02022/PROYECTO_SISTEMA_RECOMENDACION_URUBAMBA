@@ -1,0 +1,212 @@
+:root {
+            --primary-green: #27ae60;
+            --dark-green: #1e8449;
+            --text-main: #333333;
+            --text-secondary: #4B5563;
+            --bg-light: #F9FAFB;
+            --white: #FFFFFF;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+            --danger: #EF4444;
+            --accent-yellow: #F59E0B;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- Encabezado de Sección --- */
+        .page-header {
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            margin: 0 0 10px 0;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        /* --- Grid de Favoritos --- */
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- Tarjeta de Favorito --- */
+        .fav-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #E5E7EB;
+        }
+
+        .fav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Imagen */
+        .fav-image-container {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .fav-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .fav-card:hover .fav-image {
+            transform: scale(1.05);
+        }
+
+        /* Badge de Rating sobre la imagen */
+        .rating-badge {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .rating-star { color: var(--accent-yellow); }
+
+        /* Botón Eliminar (Icono flotante) */
+        .btn-remove {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--danger);
+            transition: all 0.2s;
+            box-shadow: var(--shadow-sm);
+            z-index: 2;
+        }
+
+        .btn-remove:hover {
+            background-color: var(--danger);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        /* Contenido de la Tarjeta */
+        .fav-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .fav-category {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .fav-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+            color: var(--text-main);
+        }
+
+        .fav-location {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .location-icon { width: 16px; height: 16px; opacity: 0.7; }
+
+        /* Footer de la tarjeta */
+        .fav-footer {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #F3F4F6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+        .price span { font-size: 0.85rem; font-weight: 400; color: var(--text-secondary); }
+
+        .btn-details {
+            padding: 8px 16px;
+            background-color: var(--primary-green);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        .btn-details:hover {
+            background-color: var(--dark-green);
+        }
+
+        /* Estado Vacío (Opcional, por si no hay favoritos) */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+            grid-column: 1 / -1;
+            display: none; /* Oculto por defecto */
+        }

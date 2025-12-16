@@ -18,7 +18,7 @@ export class Resenias implements OnInit {
 
   private cargarUsuarios(): void {
 
-    this.dataService.getDatos().subscribe({
+    this.dataService.getResenias().subscribe({
       next: (datos: any) => {
         console.log('Usuarios cargados:', datos);
       },

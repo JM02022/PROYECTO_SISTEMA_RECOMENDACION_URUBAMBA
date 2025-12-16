@@ -1,25 +1,39 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Usuario } from '../models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class User {
-  private url: string = 'http://api_urubamba_recomendacion/users';
-  constructor(private http: HttpClient) {  }
-  public login(data:any){
-    return this.http.post(`${this.url}/login`, data);
+export class UserService {
+
+  private url: string = 'http://localhost:4000/api_urubamba_recomendacion/users';
+
+  constructor(private http: HttpClient) {}
+
+  // POST: login
+  public login(data: { email: string; contrasena: string }): Observable<{ token: string; user: Usuario }> {
+    return this.http.post<{ token: string; user: Usuario }>(`${this.url}/login`, data);
   }
-  public register(data:any){
-    return this.http.post(`${this.url}/usuarios`, data);
+
+  // POST: registrar usuario
+  public register(data: Omit<Usuario, 'id'>): Observable<Usuario> {
+    return this.http.post<Usuario>(`${this.url}/usuarios`, data);
   }
-  public getUserById(id:any){
-    return this.http.get(`${this.url}/usuarios/${id}`);
+
+  // GET: usuario por ID
+  public getUserById(id: number): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.url}/usuarios/${id}`);
   }
-  public updateUser(id:any, data:any){
-    return this.http.put(`${this.url}/usuarios/${id}`, data);
+
+  // PUT: actualizar usuario
+  public updateUser(id: number, data: Partial<Usuario>): Observable<Usuario> {
+    return this.http.put<Usuario>(`${this.url}/usuarios/${id}`, data);
   }
-  public deleteUser(id:any){
-    return this.http.delete(`${this.url}/usuarios/${id}`);
+
+  // DELETE: eliminar usuario
+  public deleteUser(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.url}/usuarios/${id}`);
   }
 }

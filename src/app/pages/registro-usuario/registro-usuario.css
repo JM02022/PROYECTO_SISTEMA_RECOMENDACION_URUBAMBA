@@ -1,0 +1,159 @@
+:root {
+            --primary-green: #27ae60;
+            --dark-green: #1e8449;
+            --text-main: #333333;
+            --text-secondary: #4B5563;
+            --bg-light: #F9FAFB;
+            --white: #FFFFFF;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+            --input-bg: #F3F4F6;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* --- Contenedor Principal (Split Screen) --- */
+        .auth-wrapper {
+            display: flex;
+            min-height: 80vh; /* Altura mínima para lucir bien en desktop */
+            background-color: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            max-width: 1100px;
+            margin: 40px auto; /* Centrado en el contenedor padre */
+        }
+
+        /* --- Lado Izquierdo (Imagen) --- */
+        .auth-image-side {
+            flex: 1;
+            position: relative;
+            background-color: var(--primary-green);
+            display: none; /* Oculto en móvil por defecto */
+        }
+
+        .auth-image-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 40px;
+            color: var(--white);
+            box-sizing: border-box;
+        }
+
+        .overlay-text h3 { margin: 0 0 10px 0; font-size: 1.8rem; }
+        .overlay-text p { margin: 0; opacity: 0.9; font-size: 1rem; }
+
+        /* --- Lado Derecho (Formulario) --- */
+        .auth-form-side {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .auth-header { margin-bottom: 30px; text-align: center; }
+        .auth-header h2 { font-size: 2rem; color: var(--text-main); margin: 0 0 10px 0; }
+        .auth-header p { color: var(--text-secondary); margin: 0; }
+
+        /* --- Estilos del Formulario --- */
+        .form-group { margin-bottom: 20px; }
+        
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--input-bg);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            box-sizing: border-box; /* Importante para padding */
+            font-family: inherit;
+        }
+
+        .form-input:focus {
+            outline: none;
+            background-color: var(--white);
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 4px rgba(39, 174, 96, 0.1);
+        }
+
+        .form-grid-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-green);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--dark-green);
+            transform: translateY(-2px);
+        }
+
+        .auth-footer {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .auth-footer a {
+            color: var(--primary-green);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .auth-footer a:hover { text-decoration: underline; }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .auth-image-side { display: block; }
+        }
+        
+        @media (max-width: 768px) {
+            .auth-wrapper { margin: 20px; flex-direction: column; }
+            .auth-form-side { padding: 30px 20px; }
+            .form-grid-row { grid-template-columns: 1fr; gap: 0; }
+        }

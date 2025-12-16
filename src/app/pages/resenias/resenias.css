@@ -1,0 +1,366 @@
+:root {
+            --primary-green: #27ae60;  /* eco-green-dark */
+            --dark-green: #1e8449;      /* Un tono más oscuro para hover */
+            --accent-yellow: #F59E0B;   /* Para estrellas */
+            --text-main: #333333;       /* eco-text */
+            --text-secondary: #4B5563;  /* text-gray-600 */
+            --bg-light: #F9FAFB;        
+            --white: #FFFFFF;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius: 12px;
+        }
+
+        /* --- Estilos Generales --- */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a { text-decoration: none; color: inherit; transition: color 0.2s; }
+        ul { list-style: none; padding: 0; margin: 0; }
+
+        /* --- Estilo Navbar (Glassmorphism + Shrink - Tu CSS) --- */
+        #navbar {
+            padding-top: 1.5rem; /* 24px */
+            padding-bottom: 1.5rem; /* 24px */
+            transition: all 0.3s ease-out;
+            background-color: transparent; /* Inicialmente transparente o blanco segun prefieras, lo dejaré limpio al inicio */
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+        }
+        
+        /* Estado por defecto del navbar (antes de scroll) para que sea legible */
+        #navbar:not(.nav-scrolled) {
+            background-color: var(--white); /* Fondo sólido inicial */
+            box-shadow: var(--shadow-sm);
+        }
+
+        #navbar.nav-scrolled {
+            background-color: rgba(255, 255, 255, 0.85); /* bg-white/85 */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px); /* Para Safari */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            color: #333333; /* eco-text */
+            padding-top: 0.75rem; /* 12px */
+            padding-bottom: 0.75rem; /* 12px */
+        }
+        
+        #navbar .nav-link {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        #navbar.nav-scrolled .nav-link {
+            color: #4B5563; /* text-gray-600 */
+        }
+
+        #navbar.nav-scrolled .nav-link:hover,
+        #navbar .nav-link:hover {
+            color: #27ae60; /* eco-green-dark */
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: font-size 0.3s ease;
+        }
+
+        #navbar.nav-scrolled #nav-logo {
+            font-size: 1.3rem; /* Ajuste para shrink */
+        }
+
+        .logo span { color: var(--primary-green); }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav { display: flex; gap: 30px; }
+
+        .header-actions { display: flex; gap: 15px; align-items: center; }
+
+        .search-btn-icon {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        .login-btn {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(39, 174, 96, 0.3);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .login-btn:hover {
+            background-color: var(--dark-green);
+            transform: translateY(-1px);
+        }
+
+        /* --- Espaciado Principal --- */
+        .main-wrapper { padding: 40px 0; }
+
+        /* --- Encabezado del Sitio --- */
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 25px;
+        }
+        
+        .detail-title-section h1 {
+            font-size: 3rem;
+            margin: 0 0 5px 0;
+            line-height: 1.1;
+            color: var(--text-main);
+        }
+        
+        .detail-category {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .location-icon { width: 18px; height: 18px; fill: currentColor; }
+        
+        .detail-rating-badge {
+            background-color: var(--white);
+            padding: 8px 16px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #E5E7EB;
+        }
+
+        .rating-score {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+        }
+        
+        .rating-stars { color: var(--accent-yellow); font-size: 0.9rem; }
+        .rating-count { font-size: 0.8rem; color: var(--text-secondary); }
+
+        /* --- Galería de Imágenes (Grid Asimétrico - Tu CSS) --- */
+        .detail-gallery {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 15px;
+            margin-bottom: 40px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            /* Eliminamos height fijo para adaptarnos a tus clases */
+        }
+
+        .gallery-col-left {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .gallery-col-right {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .gallery-item {
+            width: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border-radius: 8px; /* Ligero radio interno */
+        }
+        
+        .gallery-item:hover { transform: scale(1.02); }
+
+        /* Tus clases de altura */
+        .img-tall {
+            height: 28rem; /* 448px */
+        }
+        
+        .img-short {
+            height: 13.5rem; /* ~216px - Nota: 216*2 + 15px gap = 447px. Casi perfecto alineado */
+        }
+        
+        /* --- Layout de Contenido --- */
+        .detail-layout {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .detail-main-content { flex: 2; }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #E5E7EB;
+            color: var(--text-main);
+        }
+
+        .text-content {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            text-align: justify;
+        }
+        
+        /* --- Reseñas --- */
+        .review-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #F3F4F6;
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #E5E7EB;
+            object-fit: cover;
+        }
+        
+        .review-meta h4 { margin: 0; font-size: 1rem; }
+        .review-date { font-size: 0.8rem; color: var(--text-secondary); }
+        .review-stars { color: var(--accent-yellow); margin-left: auto; }
+        
+        /* --- Sidebar (Sticky) --- */
+        .detail-sidebar {
+            flex: 1;
+            position: sticky;
+            top: 110px; /* Ajustado para el navbar sticky */
+        }
+
+        .booking-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid #E5E7EB;
+        }
+
+        .price-tag {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+        
+        .price-tag span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .info-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #F3F4F6;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        .info-list li strong { color: var(--text-main); }
+        .info-list li:last-child { border-bottom: none; }
+
+        .book-btn {
+            display: flex; /* Flex para alinear flecha */
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-green);
+            color: var(--white);
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .book-btn:hover { background-color: var(--dark-green); }
+
+        /* Tu animación de flecha */
+        .arrow-icon { transition: transform 0.3s ease; }
+        .arrow-hover-group:hover .arrow-icon { transform: translateX(4px); }
+
+        .map-preview {
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 200px;
+            position: relative;
+        }
+        
+        .map-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .detail-layout { flex-direction: column; }
+            .detail-gallery { grid-template-columns: 1fr; }
+            .img-tall { height: 250px; }
+            .img-short { height: 200px; }
+        }

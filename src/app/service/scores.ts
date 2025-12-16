@@ -1,28 +1,42 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Score } from '../models/score.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class Scores {
-  private urlApi = 'http://api_urubamba_recomendacion/scores';
-  constructor(private http:HttpClient) { }
-  public getScores() {
-    return this.http.get(this.urlApi);
+export class ScoresService {
+
+  private urlApi = 'http://localhost:4000/api_urubamba_recomendacion/scores';
+
+  constructor(private http: HttpClient) {}
+
+  // GET: todos los scores
+  public getScores(): Observable<Score[]> {
+    return this.http.get<Score[]>(this.urlApi);
   }
-  public getScoresByUsuario(idUsuario: number) {
+
+  // GET: scores por usuario
+  public getScoresByUsuario(idUsuario: number): Observable<Score[]> {
     const url = `${this.urlApi}/usuario/${idUsuario}`;
-    return this.http.get(url);
+    return this.http.get<Score[]>(url);
   }
-  public getScoreBySitio(IdSitio: number){
-    const url = `${this.urlApi}/sitio/${IdSitio}`;
-    return this.http.get(url);
+
+  // GET: score por sitio turístico
+  public getScoreBySitio(idSitio: number): Observable<Score> {
+    const url = `${this.urlApi}/sitio/${idSitio}`;
+    return this.http.get<Score>(url);
   }
-  public postScore(dato: any) {
-    return this.http.post(this.urlApi, dato);
+
+  // POST: crear score
+  public postScore(dato: Score): Observable<Score> {
+    return this.http.post<Score>(this.urlApi, dato);
   }
-  public deleteScore(id: number) {
+
+  // DELETE: eliminar score
+  public deleteScore(id: number): Observable<void> {
     const url = `${this.urlApi}/${id}`;
-    return this.http.delete(url);
+    return this.http.delete<void>(url);
   }
 }

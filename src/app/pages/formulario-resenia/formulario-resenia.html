@@ -1,0 +1,63 @@
+<div class="container" style="margin-top: 50px;">
+        <div class="review-card">
+            
+            <!-- Contexto: ¿Qué estoy reseñando? -->
+            <div class="review-context-header">
+                <img src="https://images.unsplash.com/photo-1587595431973-160d0d94add1?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Urubamba" class="site-thumb">
+                <div class="context-text">
+                    <h2>Urubamba</h2>
+                    <p>Valle Sagrado, Cusco</p>
+                </div>
+            </div>
+
+            <!-- Formulario -->
+            <div class="form-body">
+                <form>
+                    
+                    <!-- Sección Rating -->
+                    <div class="form-section">
+                        <label class="section-label">¿Cómo calificarías tu experiencia?</label>
+                        <div class="rating-container">
+                            <!-- Orden inverso para lógica CSS: 5 -> 1 -->
+                            <input type="radio" id="star5" name="rating" value="5" class="star-input"><label for="star5" class="star-label">★</label>
+                            <input type="radio" id="star4" name="rating" value="4" class="star-input"><label for="star4" class="star-label">★</label>
+                            <input type="radio" id="star3" name="rating" value="3" class="star-input"><label for="star3" class="star-label">★</label>
+                            <input type="radio" id="star2" name="rating" value="2" class="star-input"><label for="star2" class="star-label">★</label>
+                            <input type="radio" id="star1" name="rating" value="1" class="star-input"><label for="star1" class="star-label">★</label>
+                        </div>
+                    </div>
+
+                    <!-- Título -->
+                    <div class="form-section">
+                        <label class="section-label">Título de tu reseña</label>
+                        <input type="text" class="form-input" placeholder="Ej: ¡Un lugar mágico e inolvidable!">
+                    </div>
+
+                    <!-- Cuerpo -->
+                    <div class="form-section">
+                        <label class="section-label">Cuéntanos más</label>
+                        <span class="section-helper">¿Qué fue lo que más te gustó? ¿Algún consejo para otros viajeros?</span>
+                        <textarea class="form-input" placeholder="Escribe aquí tu experiencia detallada..."></textarea>
+                    </div>
+
+                    <!-- Fotos -->
+                    <div class="form-section">
+                        <label class="section-label">Añadir fotos (Opcional)</label>
+                        <div class="upload-dropzone">
+                            <span class="upload-icon">📷</span>
+                            <div class="upload-text">Haz clic o arrastra fotos aquí</div>
+                            <div class="upload-subtext">Soporta JPG, PNG (Máx 5MB)</div>
+                        </div>
+                    </div>
+
+                    <!-- Acciones -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-cancel">Cancelar</button>
+                        <button type="submit" class="btn btn-submit">Publicar Reseña</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>

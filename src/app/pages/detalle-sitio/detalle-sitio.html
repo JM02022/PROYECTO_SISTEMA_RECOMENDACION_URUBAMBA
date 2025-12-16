@@ -1,1 +1,94 @@
-<p>detalle-sitio works!</p>
+<div class="container main-wrapper" style="margin-top: 80px;" *ngIf="sitio; else loadingTpl">
+
+    <div class="detail-header">
+        <div class="detail-title-section">
+            <h1>{{ sitio.nombre }}</h1>
+            
+            <div class="detail-category">
+                <svg class="location-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                {{ sitio.direccion || 'Cusco, Perú' }}
+            </div>
+        </div>
+        
+        <div class="detail-rating-section">
+            <div class="detail-rating-badge">
+                <span class="rating-score">{{ sitio.rating_promedio || 'New' }}</span>
+                <div class="rating-stars">★★★★★</div>
+                <span class="rating-count">Reseñas Verificadas</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="detail-gallery">
+        <div class="gallery-col-left">
+            <img [src]="sitio.galeria[0]?.url_imagen || 'assets/placeholder.jpg'" 
+                 [alt]="sitio.nombre" 
+                 class="gallery-item img-tall object-cover">
+        </div>
+        <div class="gallery-col-right">
+            <img [src]="sitio.galeria[1]?.url_imagen || sitio.galeria[0]?.url_imagen || 'assets/placeholder.jpg'" 
+                 [alt]="sitio.nombre + ' vista 2'" 
+                 class="gallery-item img-short object-cover">
+                 
+            <img [src]="sitio.galeria[2]?.url_imagen || sitio.galeria[0]?.url_imagen || 'assets/placeholder.jpg'" 
+                 [alt]="sitio.nombre + ' vista 3'" 
+                 class="gallery-item img-short object-cover">
+        </div>
+    </div>
+
+    <div class="detail-layout">
+
+        <main class="detail-main-content">
+            <h2 class="section-title">Sobre {{ sitio.nombre }}</h2>
+            <div class="text-content">
+                <p>{{ sitio.descripcion }}</p>
+                
+                <p><strong>Lo imperdible:</strong> Disfruta de la magia de este lugar único en los Andes, perfecto para conectar con la naturaleza y la historia.</p>
+            </div>
+
+            <h2 class="section-title">Opiniones de viajeros</h2>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Usuario" class="avatar">
+                    <div class="review-meta">
+                        <h4>Javier Torres</h4>
+                        <span class="review-date">Hace 1 mes</span>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+                <p style="color: var(--text-secondary); margin: 0;">Una experiencia increíble visitar {{ sitio.nombre }}. Totalmente recomendado.</p>
+            </div>
+        </main>
+
+        <aside class="detail-sidebar">
+            <div class="booking-card">
+                <div class="price-tag">S/ {{ sitio.precio_estimado || '0.00' }} <span>/ aprox</span></div>
+                
+                <ul class="info-list">
+                    <li><span>Ubicación</span> <strong>{{ sitio.direccion }}</strong></li>
+                    <li><span>Clima</span> <strong>Templado</strong></li>
+                    <li><span>Categoría</span> <strong>Turismo</strong></li>
+                </ul>
+
+                <button class="book-btn arrow-hover-group">
+                    Reservar Tour
+                    <span class="arrow-icon">→</span>
+                </button>
+                <p style="text-align: center; font-size: 0.8rem; color: #9CA3AF; margin-top: 10px;">Salidas diarias disponibles</p>
+            </div>
+            <!--
+            <div class="map-preview">
+                <img src="https://images.unsplash.com/photo-1531169218209-646cb05eb405?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mapa">
+                <div class="map-overlay">Ver en Google Maps</div>
+            </div>-->
+        </aside>
+    </div>
+</div>
+
+<ng-template #loadingTpl>
+    <div style="height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #666;">
+        <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 3rem; color: var(--eco-green);"></i>
+        <p style="margin-top: 20px; font-size: 1.2rem;">Cargando información del destino...</p>
+    </div>
+</ng-template>  

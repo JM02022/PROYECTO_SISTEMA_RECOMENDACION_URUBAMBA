@@ -1,158 +1,134 @@
-<!-- 2. Sección "Hero" Asimétrica -->
-    <header class="relative bg-eco-beige pt-40 pb-20">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-                
-                <!-- Columna de Texto y Búsqueda (Izquierda) -->
-                <div class="lg:col-span-2 text-center lg:text-left">
-                    <h1 class="text-5xl md:text-6xl font-extrabold text-eco-text mb-6 leading-tight">
-                        Encuentra tu
-                        <span classD="text-eco-green-dark">Próxima Aventura</span>
-                    </h1> 
-                    <p class="text-xl text-gray-600 mb-10">
-                        Recomendaciones de viajes sostenibles curadas por expertos locales.
-                    </p>
+<header class="relative bg-eco-beige pt-40 pb-20">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+
+            <div class="lg:col-span-2 text-center lg:text-left">
+                <h1 class="text-5xl md:text-6xl font-extrabold text-eco-text mb-6 leading-tight">
+                    Encuentra tu
+                    <span class="text-eco-green-dark">Próxima Aventura</span>
+                </h1>
+                <p class="text-xl text-gray-600 mb-10">
+                    Recomendaciones de viajes sostenibles curadas por expertos locales.
+                </p>
+
+                <div class="relative flex w-full max-w-lg mx-auto lg:mx-0 shadow-lg rounded-full">
+                    <input type="text" placeholder="¿A dónde quieres ir hoy? (ej: 'Ollantaytambo')"
+                        class="w-full py-4 px-6 rounded-full border-2 border-transparent 
+                               focus:outline-none focus:border-eco-green focus:ring-1 focus:ring-eco-green">
+                    <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-eco-green text-white w-12 h-12
+                                   rounded-full flex items-center justify-center text-xl 
+                                   hover:bg-eco-green-dark transition-all duration-300">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="lg:col-span-3 hidden lg:block" *ngIf="sitiosUnidos.length > 0">
+                <div class="grid grid-cols-2 gap-4 h-96">
+                    <div class="col-span-1 h-full">
+                        <img [src]="sitiosUnidos[0]?.galeria?.[0]?.url_imagen || 'assets/placeholder.jpg'" 
+                             [alt]="sitiosUnidos[0]?.nombre"
+                             class="rounded-xl object-cover w-full h-full shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="col-span-1 grid grid-rows-2 gap-4 h-full">
+                        <div class="h-full overflow-hidden rounded-xl">
+                            <img *ngIf="sitiosUnidos.length > 1" 
+                                 [src]="sitiosUnidos[1]?.galeria?.[0]?.url_imagen || 'assets/placeholder.jpg'"
+                                 [alt]="sitiosUnidos[1]?.nombre"
+                                 class="object-cover w-full h-full shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="h-full overflow-hidden rounded-xl">
+                            <img *ngIf="sitiosUnidos.length > 2" 
+                                 [src]="sitiosUnidos[2]?.galeria?.[0]?.url_imagen || 'assets/placeholder.jpg'"
+                                 [alt]="sitiosUnidos[2]?.nombre"
+                                 class="object-cover w-full h-full shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-3 hidden lg:flex items-center justify-center h-96" *ngIf="sitiosUnidos.length === 0">
+                <p class="text-gray-500 text-lg animate-pulse">Cargando destinos...</p>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<section id="destinos" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Recomendaciones Populares</h2>
+        <p class="text-gray-600 mb-12 text-lg">Basado en las calificaciones de nuestra comunidad.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <ng-container *ngFor="let sitio of sitiosUnidos; let i = index">
+
+                <div *ngIf="i % 4 === 0" 
+                     class="md:col-span-2 bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row 
+                            transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group">
                     
-                    <!-- Barra de Búsqueda Prominente -->
-                    <div class="relative flex w-full max-w-lg mx-auto lg:mx-0 shadow-lg rounded-full">
-                        <input type="text" placeholder="¿A dónde quieres ir hoy? (ej: 'Ollantaytambo')"
-                               class="w-full py-4 px-6 rounded-full border-2 border-transparent 
-                                      focus:outline-none focus:border-eco-green focus:ring-1 focus:ring-eco-green">
-                        <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-eco-green text-white w-12 h-12
-                                       rounded-full flex items-center justify-center text-xl 
-                                       hover:bg-eco-green-dark transition-all duration-300">
-                            <i class="fa-solid fa-search"></i>
-                        </button>
+                    <div class="w-full md:w-5/12 h-64 md:h-full overflow-hidden bg-gray-200">
+                        <img [src]="sitio.galeria[0]?.url_imagen || 'https://via.placeholder.com/400x300?text=Sin+Imagen'" 
+                             [alt]="sitio.nombre" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
                     </div>
-                </div>
-                
-                <!-- Columna de Grid de Imágenes (Derecha) -->
-                <div class="lg:col-span-3 hidden lg:block">
-                    <div class="grid grid-cols-2 gap-4">
-                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/ae/31/05/escultura-monumental.jpg?w=500&h=-1&s=1" 
-                             alt="Lago de montaña" 
-                             class="rounded-xl object-cover w-full img-tall col-span-1 shadow-lg transform hover:scale-105 transition-transform duration-300">
+
+                    <div class="p-6 md:p-8 flex flex-col justify-between w-full md:w-7/12">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-eco-green-dark font-semibold text-sm uppercase tracking-wide">
+                                    <i class="fa-solid fa-map-marker-alt mr-1"></i> {{ sitio.direccion || 'Cusco' }}
+                                </span>
+                                <div class="bg-eco-green-dark text-white rounded-full px-4 py-1 text-sm font-bold shadow-lg">
+                                    <i class="fa-solid fa-star text-yellow-300"></i> {{ sitio.rating_promedio || 0 }}/5
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3 text-eco-text">{{ sitio.nombre }}</h3>
+                            <p class="text-gray-600 mb-5 line-clamp-3">{{ sitio.descripcion }}</p>
+                        </div>
                         
-                        <div class="col-span-1 grid grid-rows-2 gap-4">
-                            <img src="https://www.machupicchuterra.com/wp-content/uploads/i-chinchero-arqueologico.jpg" 
-                                 alt="Playa tropical" 
-                                 class="rounded-xl object-cover w-full img-short shadow-lg transform hover:scale-105 transition-transform duration-300">
-                             <img src="https://www.perurail.com/wp-content/uploads/2023/04/urubamba_secundaria.webp" 
-                                 alt="Montañas nevadas" 
-                                 class="rounded-xl object-cover w-full img-short shadow-lg transform hover:scale-105 transition-transform duration-300">
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </header>
-
-        <!-- 3. Sección de Recomendaciones (Parrilla Dinámica) -->
-    <section id="destinos" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            
-            <!-- Título de la Sección -->
-            <h2 class="text-4xl font-bold text-gray-800 mb-4">Recomendaciones Populares</h2>
-            <p class="text-gray-600 mb-12 text-lg">Basado en las calificaciones de nuestra comunidad.</p>
-            
-            <!-- Grid Asimétrico de Tarjetas -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Tarjeta 1 (Ancha) -->
-                <div class="md:col-span-2 bg-white rounded-xl shadow-lg overflow-hidden 
-                            flex flex-col md:flex-row 
-                            transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-                    <!-- Imagen -->
-                    <img src="https://www.peru.travel/Contenido/General/Imagen/es/447/1.1/urubamba.jpg" 
-                        alt="Pueblo de Urubamba" 
-                        class="w-full md:w-5/12 h-64 md:h-full object-cover">
-                    <!-- Contenido -->
-                    <div class="p-6 md:p-8 flex flex-col justify-between">
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-eco-green-dark font-semibold">Urubamba</span>
-                                <!-- Distintivo de Calificación -->
-                                <div class="bg-eco-green-dark text-white rounded-full px-4 py-1 text-sm font-bold shadow-lg">
-                                    <i class="fa-solid fa-star text-yellow-300"></i> 9.5/10
-                                </div>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-3 text-eco-text">Pueblo de Urubamba</h3>
-                            <p class="text-gray-600 mb-5">Centro del Valle Sagrado con plazas, mercados locales y cultura viva de la región.</p>
-                        </div>
-                        <a href="#" class="arrow-hover-group text-eco-green-dark font-semibold text-lg transition-all duration-300">
+                        <a [routerLink]="['/DetalleSitio', sitio.sitio_id]" 
+                           class="inline-flex items-center text-eco-green-dark font-semibold text-lg transition-colors duration-300 hover:text-green-700 cursor-pointer">
                             Explorar más
-                            <i class="fa-solid fa-arrow-right ml-1 transition-transform duration-300 arrow-icon"></i>
+                            <i class="fa-solid fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-2"></i>
                         </a>
                     </div>
                 </div>
-                
-                <!-- Tarjeta 2 (Vertical) -->
-                <div class="md:col-span-1 bg-white rounded-xl shadow-lg overflow-hidden
-                            transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-                    <div class="relative">
-                        <img src="https://trexperienceperu.com/sites/default/files/explanada_chinchero.jpg" alt="Chinchero" class="w-full h-60 object-cover">
-                        <!-- Distintivo de Calificación -->
+
+                <div *ngIf="i % 4 !== 0" 
+                     class="md:col-span-1 bg-white rounded-xl shadow-lg overflow-hidden flex flex-col
+                            transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group">
+                    
+                    <div class="relative h-60 overflow-hidden bg-gray-200">
+                        <img [src]="sitio.galeria[0]?.url_imagen || 'https://via.placeholder.com/400x300?text=Sin+Imagen'" 
+                             [alt]="sitio.nombre" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        
                         <div class="absolute top-4 right-4 bg-eco-green-dark text-white rounded-full px-3 py-1 text-sm font-bold shadow-lg">
-                            <i class="fa-solid fa-star text-yellow-300"></i> 9.2/10
+                            <i class="fa-solid fa-star text-yellow-300"></i> {{ sitio.rating_promedio || 0 }}/5
                         </div>
                     </div>
-                    <div class="p-6">
-                        <span class="text-eco-green-dark font-semibold">Urubamba</span>
-                        <h3 class="text-2xl font-bold mb-3 text-eco-text">Chinchero</h3>
-                        <p class="text-gray-600 mb-5">Pueblo con fuerte tradición textil y ruinas incas, rodeado de vistas impresionantes del valle.</p>
-                        <a href="#" class="arrow-hover-group text-eco-green-dark font-semibold text-lg transition-all duration-300">
-                            Explorar más
-                            <i class="fa-solid fa-arrow-right ml-1 transition-transform duration-300 arrow-icon"></i>
-                        </a>
-                    </div>
-                </div>
 
-                <!-- Tarjeta 3 (Vertical) -->
-                <div class="md:col-span-1 bg-white rounded-xl shadow-lg overflow-hidden
-                            transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-                    <div class="relative">
-                        <img src="https://www.boletomachupicchu.com/gutblt/wp-content/uploads/2021/02/salares-maras-.jpg" alt="Maras" class="w-full h-60 object-cover">
-                        <div class="absolute top-4 right-4 bg-eco-green-dark text-white rounded-full px-3 py-1 text-sm font-bold shadow-lg">
-                            <i class="fa-solid fa-star text-yellow-300"></i> 9.0/10
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <span class="text-eco-green-dark font-semibold">Urubamba</span>
-                        <h3 class="text-2xl font-bold mb-3 text-eco-text">Maras</h3>
-                        <p class="text-gray-600 mb-5">Famoso por sus salineras en terrazas y paisajes impresionantes del Valle Sagrado.</p>
-                        <a href="#" class="arrow-hover-group text-eco-green-dark font-semibold text-lg transition-all duration-300">
-                            Explorar más
-                            <i class="fa-solid fa-arrow-right ml-1 transition-transform duration-300 arrow-icon"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Tarjeta 4 (Ancha) -->
-                <div class="md:col-span-2 bg-white rounded-xl shadow-lg overflow-hidden 
-                            flex flex-col md:flex-row 
-                            transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-                    <img src="https://www.amarujourneyperu.com/blog/wp-content/uploads/ande1.webp" 
-                        alt="Moray" 
-                        class="w-full md:w-5/12 h-64 md:h-full object-cover">
-                    <div class="p-6 md:p-8 flex flex-col justify-between">
+                    <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-eco-green-dark font-semibold">Urubamba</span>
-                                <div class="bg-eco-green-dark text-white rounded-full px-4 py-1 text-sm font-bold shadow-lg">
-                                    <i class="fa-solid fa-star text-yellow-300"></i> 9.3/10
-                                </div>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-3 text-eco-text">Moray</h3>
-                            <p class="text-gray-600 mb-5">Antiguas terrazas circulares incas utilizadas para experimentos agrícolas y aprendizaje cultural.</p>
+                            <span class="text-eco-green-dark font-semibold text-sm uppercase tracking-wide block mb-2">
+                                <i class="fa-solid fa-map-marker-alt mr-1"></i> {{ sitio.direccion || 'Cusco' }}
+                            </span>
+                            <h3 class="text-xl font-bold mb-3 text-eco-text">{{ sitio.nombre }}</h3>
+                            <p class="text-gray-600 mb-5 line-clamp-3 text-sm">{{ sitio.descripcion }}</p>
                         </div>
-                        <a href="#" class="arrow-hover-group text-eco-green-dark font-semibold text-lg transition-all duration-300">
+                        
+                        <a [routerLink]="['/DetalleSitio', sitio.sitio_id]"
+                           class="inline-flex items-center text-eco-green-dark font-semibold text-lg transition-colors duration-300 hover:text-green-700 cursor-pointer">
                             Explorar más
-                            <i class="fa-solid fa-arrow-right ml-1 transition-transform duration-300 arrow-icon"></i>
+                            <i class="fa-solid fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-2"></i>
                         </a>
                     </div>
                 </div>
 
-            </div>
+            </ng-container>
+
         </div>
-    </section>
+    </div>
+</section>

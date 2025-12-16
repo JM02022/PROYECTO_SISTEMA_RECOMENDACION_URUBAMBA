@@ -1,0 +1,165 @@
+<div class="container" style="margin-top: 100px;">
+        <div class="dashboard-grid">
+            
+            <!-- Sidebar Admin -->
+            <aside class="sidebar">
+                <div class="admin-profile">
+                    <div class="admin-avatar">AD</div>
+                    <div class="admin-info">
+                        <h4>Admin User</h4>
+                        <span>Administrador</span>
+                    </div>
+                </div>
+
+                <ul class="menu-list">
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <span>📊</span> Analytics
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link active">
+                            <span>🗺️</span> Gestión de Sitios
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <span>📅</span> Reservas
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <span>👥</span> Usuarios
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <span>💬</span> Moderación
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link logout">
+                            <span>🚪</span> Cerrar Sesión
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Contenido Principal -->
+            <main>
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Sitios Turísticos</h1>
+                        <span class="page-subtitle">Administra los destinos disponibles en la plataforma.</span>
+                    </div>
+                    <button class="btn-primary">
+                        <span>+</span> Añadir Nuevo Sitio
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Sitio / Ubicación</th>
+                                <th>Precio Base</th>
+                                <th>Calificación</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Fila 1 -->
+                            <tr>
+                                <td>
+                                    <div class="site-info">
+                                        <img src="https://images.unsplash.com/photo-1587595431973-160d0d94add1?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Urubamba" class="site-thumb">
+                                        <div>
+                                            <span class="site-name">Urubamba</span>
+                                            <span class="site-location">Cusco, Perú</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>$120.00</td>
+                                <td>★ 4.9</td>
+                                <td><span class="status-badge status-published">Publicado</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <button class="btn-icon" title="Editar">✏️</button>
+                                        <button class="btn-icon delete" title="Eliminar">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Fila 2 -->
+                            <tr>
+                                <td>
+                                    <div class="site-info">
+                                        <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Machu Picchu" class="site-thumb">
+                                        <div>
+                                            <span class="site-name">Machu Picchu</span>
+                                            <span class="site-location">Cusco, Perú</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>$250.00</td>
+                                <td>★ 5.0</td>
+                                <td><span class="status-badge status-published">Publicado</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <button class="btn-icon" title="Editar">✏️</button>
+                                        <button class="btn-icon delete" title="Eliminar">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Fila 3 -->
+                            <tr>
+                                <td>
+                                    <div class="site-info">
+                                        <img src="https://images.unsplash.com/photo-1534234828563-0259b76e27a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Montaña 7 Colores" class="site-thumb">
+                                        <div>
+                                            <span class="site-name">Montaña 7 Colores</span>
+                                            <span class="site-location">Vinicunca, Perú</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>$80.00</td>
+                                <td>-</td>
+                                <td><span class="status-badge status-draft">Borrador</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <button class="btn-icon" title="Editar">✏️</button>
+                                        <button class="btn-icon delete" title="Eliminar">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Fila 4 -->
+                            <tr>
+                                <td>
+                                    <div class="site-info">
+                                        <img src="https://images.unsplash.com/photo-1589553416260-f586c8f1514f?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Laguna Humantay" class="site-thumb">
+                                        <div>
+                                            <span class="site-name">Laguna Humantay</span>
+                                            <span class="site-location">Cusco, Perú</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>$95.00</td>
+                                <td>★ 4.7</td>
+                                <td><span class="status-badge status-published">Publicado</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <button class="btn-icon" title="Editar">✏️</button>
+                                        <button class="btn-icon delete" title="Eliminar">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>

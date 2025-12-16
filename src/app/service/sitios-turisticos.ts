@@ -1,26 +1,40 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { SitioTuristico } from '../models/sitio-turistico.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SitiosTuristicos {
-  private urlApi: string = 'http://api_urubamba_recomendacion/sitios_turisticos';
-  constructor(private http:HttpClient) { }
-  public getSitiosTuristicos(){
-    return this.http.get(this.urlApi);
+export class SitiosTuristicosService {
+
+  private urlApi: string = 'http://localhost:4000/api_urubamba_recomendacion/sitios_turisticos';
+
+  constructor(private http: HttpClient) {}
+
+  // GET: todos los sitios turísticos
+  public getSitiosTuristicos(): Observable<SitioTuristico[]> {
+    return this.http.get<SitioTuristico[]>(this.urlApi);
   }
-  public getSitioTuristicoById(id:any){
-    return this.http.get(`${this.urlApi}/${id}`);
+
+  // GET: sitio turístico por ID
+  public getSitioTuristicoById(id: number): Observable<SitioTuristico> {
+    return this.http.get<SitioTuristico>(`${this.urlApi}/${id}`);
   }
-  public postSitioTuristico(data:any){
-    return this.http.post(this.urlApi, data);
+
+  // POST: crear sitio turístico
+  public postSitioTuristico(data: SitioTuristico): Observable<SitioTuristico> {
+    return this.http.post<SitioTuristico>(this.urlApi, data);
   }
-  public updateSitioTuristico(id:any, data:any){
-    return this.http.put(`${this.urlApi}/${id}`, data);
+
+  // PUT: actualizar sitio turístico
+  public updateSitioTuristico(id: number, data: SitioTuristico): Observable<SitioTuristico> {
+    return this.http.put<SitioTuristico>(`${this.urlApi}/${id}`, data);
   }
-  public deleteSitioTuristico(id:any){
-    return this.http.delete(`${this.urlApi}/${id}`);
+
+  // DELETE: eliminar sitio turístico
+  public deleteSitioTuristico(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.urlApi}/${id}`);
   }
 
 }
